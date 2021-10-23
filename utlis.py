@@ -23,106 +23,112 @@ async def bash(cmd):
 
 #_____________________ Fast Download / Fast Upload ____________________#
 
-async def progress_upload(file, name, taime, event, msg):
-    with open(file, "rb") as f:
-        result = await uploadable(
-            client=event.client,
-            file=f,
-            filename=name,
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(
-                    d,
-                    t,
-                    event,
-                    taime,
-                    msg,
-                ),
-            ),
-        )
-    return result
+import sys
+import os
+import pathlib
+import time
+import datetime as dt
+
+sys.path.insert(0, f"{pathlib.Path(__file__).parent.resolve()}")
+
+from FastTelethon import upload_file, download_file
 
 
-async def progress_download(filename, file, event, taime, msg):
-    with open(filename, "wb") as fk:
-        result = await downloadable(
-            client=event.client,
-            location=file,
-            out=fk,
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(
-                    d,
-                    t,
-                    event,
-                    taime,
-                    msg,
-                ),
-            ),
-        )
-    return result
-#______________________ Progress/Status Bar ______________________#
-def time_formatter(milliseconds):
-    minutes, seconds = divmod(int(milliseconds / 1000), 60)
-    hours, minutes = divmod(minutes, 60)
-    days, hours = divmod(hours, 24)
-    weeks, days = divmod(days, 7)
-    tmp = (
-        ((str(weeks) + "w:") if weeks else "")
-        + ((str(days) + "d:") if days else "")
-        + ((str(hours) + "h:") if hours else "")
-        + ((str(minutes) + "m:") if minutes else "")
-        + ((str(seconds) + "s") if seconds else "")
-    )
-    if tmp != "":
-        if tmp.endswith(":"):
-            return tmp[:-1]
-        else:
-            return tmp
+class Timer:
+    def __init__(self, time_between=5):
+        self.start_time = time.time()
+        self.time_between = time_between
+
+    def can_send(self):
+        if time.time() > (self.start_time + self.time_between):
+            self.start_time = time.time()
+            return True
+        return False
+
+def progress_bar_str(done, total):
+    percent = round(done/total*100, 2)
+    strin = "░░░░░░░░░░░░░░░░░░░░"
+    strin = list(strin)
+    for i in range(round(percent)//5):
+        strin[i] = "█"
+    strin = "".join(strin)
+    final = f"Percent: {percent}%\n{human_readable_size(done)}/{human_readable_size(total)}\n{strin}"
+    return final 
+
+def human_readable_size(size, decimal_places=2):
+    for unit in ['B', 'KB', 'MB', 'GB', 'TB', 'PB']:
+        if size < 1024.0 or unit == 'PB':
+            break
+        size /= 1024.0
+    return f"{size:.{decimal_places}f} {unit}"
+
+async def fast_download(client, msg, reply = None, download_folder = None, progress_bar_function = progress_bar_str):
+    timer = Timer()
+
+    async def progress_bar(downloaded_bytes, total_bytes):
+        if timer.can_send():
+            data = progress_bar_function(downloaded_bytes, total_bytes)
+            await reply.edit(f"Downloading...\n{data}")
+
+    file = msg.document
+    filename = msg.file.name
+    dir = "downloads/"
+
+    try:
+        os.mkdir("downloads/")
+    except:
+        pass
+
+    if not filename:
+        filename = (
+            "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
+                    )
+                    
+    if download_folder == None:
+        download_location = dir + filename
     else:
-        return "0 s"
+        download_location = download_folder + filename 
 
-
-def humanbytes(size):
-    if size in [None, ""]:
-        return "0 B"
-    for unit in ["B", "KB", "MB", "GB"]:
-        if size < 1024:
-            break
-        size /= 1024
-    return f"{size:.2f} {unit}"
-
-
-def numerize(number):
-    for unit in ["", "K", "M", "B", "T"]:
-        if number < 1000:
-            break
-        number /= 1000
-    return f"{number:.2f} {unit}"
-
-
-async def progress(current, total, event, start, type_of_ps, file_name=None):
-    diff = time.time() - start
-    if round(diff % 10.00) == 0 or current == total:
-        percentage = current * 100 / total
-        speed = current / diff
-        time_to_completion = round((total - current) / speed) * 1000
-        progress_str = "`[{0}{1}] {2}%`\n\n".format(
-            "".join("■" for i in range(math.floor(percentage / 5))),
-            "".join("" for i in range(20 - math.floor(percentage / 5))),
-            round(percentage, 2),
-        )
-
-        tmp = (
-            progress_str
-            + "`{0} of {1}`\n\n`• 🌠 Speed: {2}/s`\n\n`• ⏰ ETA: {3}`\n\n".format(
-                humanbytes(current),
-                humanbytes(total),
-                humanbytes(speed),
-                time_formatter(time_to_completion),
-            )
-        )
-        if file_name:
-            await event.edit(
-                "`• {}`\n\n`File Name: {}`\n\n{}".format(type_of_ps, file_name, tmp)
+    with open(download_location, "wb") as f:
+        if reply != None:
+            await download_file(
+                client=client, 
+                location=file, 
+                out=f,
+                progress_callback=progress_bar
             )
         else:
-            await event.edit("`• {}`\n\n{}".format(type_of_ps, tmp))
+            await download_file(
+                client=client, 
+                location=file, 
+                out=f,
+            )
+    await reply.edit("Finished downloading")
+    return download_location
+
+async def fast_upload(client, file_location, reply=None, name=None, progress_bar_function = progress_bar_str):
+    timer = Timer()
+    if name == None:
+        name = file_location.split("/")[-1]
+    async def progress_bar(downloaded_bytes, total_bytes):
+        if timer.can_send():
+            data = progress_bar_function(downloaded_bytes, total_bytes)
+            await reply.edit(f"Uploading...\n{data}")
+    if reply != None:
+        with open(file_location, "rb") as f:
+            the_file = await upload_file(
+                client=client,
+                file=f,
+                name=name,
+                progress_callback=progress_bar
+            )
+    else:
+        with open(file_location, "rb") as f:
+            the_file = await upload_file(
+                client=client,
+                file=f,
+                name=name,
+            )
+        
+    await reply.edit("Finished uploading")
+    return the_file
