@@ -3,5 +3,5 @@
 
 ```
 I have added some simple codes which contains telethon download then ffmpeg progress then upload. 
-U can learn about [ffmpeg](https://ffmpeg.org)
+(c) @Animes_Encoded [ Search on Telegram ]
 ```
