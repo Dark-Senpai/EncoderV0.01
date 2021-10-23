@@ -7,7 +7,7 @@ import sys
 import time
 import datetime at dt
 import pathlib 
-from traceback import format_exc
+
 
 from FastTelethon import upload_file, download_file
 
