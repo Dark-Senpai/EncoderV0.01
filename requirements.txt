@@ -1,2 +1,2 @@
 https://github.com/LonamiWebs/Telethon/archive/refs/heads/master.zip
-https://github.com/Dark-Senpai/TelethonDownloader/archive/refs/heads/master.zip
+https://github.com/Dark-Senpai/TelethonDownloader/archive/refs/heads/main.zip
