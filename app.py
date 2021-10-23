@@ -18,9 +18,9 @@
 
 from telethon import events, Button
 from config import bot, bot_username
-from TelethonDownloader.TelethonLibrary.fast_download import(
-  progress_upload, 
-  progress_download,
+from utils import(
+  fast_download,
+  fast_upload,
   bash
 )
 import subprocess
@@ -56,12 +56,12 @@ async def _(event):
 async def _(event):
   mesh = await event.get_reply_message()
   fuk = await event.reply("📥 Downloading 📥")
-  file = await progress_download(bot, mesh, fuk, "./downloads/")
+  file = await fast_download(bot, mesh, fuk, "./downloads/")
   file = file.split("/")[-1]
   print(file)
   await fuk.edit("⏰ Encoding In **Progress**")
   await bash(f'ffmpeg -i "{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "[ENCODED] {file}"')
-  final_file = await progress_upload(bot, f"./downloads/[ENCODED] {file}", fuk)
+  final_file = await fast_upload(bot, f"./downloads/[ENCODED] {file}", fuk)
   os.remove(f"./downloads/{file}")
   os.remove(f"./downloads/[ENCODED] {file}")
   await event.reply(f"./downloads/[ENCODED] {file}", file=final_file, force_document=True)
