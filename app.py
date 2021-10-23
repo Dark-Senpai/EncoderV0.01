@@ -58,25 +58,3 @@ async def _(event):
 bot.start()
 
 bot.run_until_disconnected()
-             
-
-             
-
-             
-             
-             
-             
-       
-  
-  
-  
-  
-        
-        
-      
-    
-     
-  
-
-
-
