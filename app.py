@@ -41,9 +41,9 @@ async def _(event):
   await event.reply(
     xx,
     buttons=[
-      [Button.url("Boss", url="https://t.me/Bro_isDarkal")]
-      )]
-    )
+      [Button.url("Boss", url="https://t.me/Bro_isDarkal")],
+      )
+      
 #_______________ ls _______________________#
 @bot.on(events.NewMessage(pattern=f"/ls{bot_username}"))
 async def _(event):
