@@ -48,7 +48,8 @@ async def _(event):
              
 #_________________ List Files _________________#
 
-@bot.on(events.NewMessage(pattern=f"/ls{bot_username}"))
+
+@bot.on(events.NewMessage(pattern=f"/stats{bot_username}"))
 
              
 
