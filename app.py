@@ -11,7 +11,7 @@
 #    General Public License for more details.
 #
 # License can be found in <
-# https://github.com/Dark-Senpai/EncoderV0.01/blob/main/LICENSE> .
+# https://github.com/Dark-Senpai/EncoderV0.01/blob/main/License> .
 
 
 #_______________ Import Vital items ________________#
