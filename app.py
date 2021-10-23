@@ -60,7 +60,7 @@ async def _(event):
   file = file.split("/")[-1]
   print(file)
   await fuk.edit("⏰ Encoding In **Progress**")
-  await bash(f'ffmpeg -i "{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "[ENCODED] {file}"'
+  await bash(f'ffmpeg -i "{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "[ENCODED] {file}"')
   final_file = await progress_upload(bot, f"./downloads/[ENCODED] {file}", fuk)
   os.remove(f"./downloads/{file}")
   os.remove(f"./downloads/[ENCODED] {file}")
