@@ -5,7 +5,12 @@ import os
 import re
 import sys
 import time
+import datetime at dt
+import pathlib 
 from traceback import format_exc
+
+from FastTelethon import upload_file, download_file
+
 
 from . import *
 
@@ -23,15 +28,7 @@ async def bash(cmd):
 
 #_____________________ Fast Download / Fast Upload ____________________#
 
-import sys
-import os
-import pathlib
-import time
-import datetime as dt
-
 sys.path.insert(0, f"{pathlib.Path(__file__).parent.resolve()}")
-
-from FastTelethon import upload_file, download_file
 
 
 class Timer:
@@ -132,3 +129,4 @@ async def fast_upload(client, file_location, reply=None, name=None, progress_bar
         
     await reply.edit("Finished uploading")
     return the_file
+#__________________ Done ________________#
