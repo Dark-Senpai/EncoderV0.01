@@ -47,8 +47,9 @@ async def _(event):
   await asyncio.sleep(5)
              
 #_________________ List Files _________________#
+
 @bot.on(events.NewMessage(pattern=f"/ls{bot_username}"))
-async def _(event):
+
              
 
              
