@@ -17,13 +17,14 @@
 #_______________ Import Vital items ________________#
 
 from telethon import events, Button
-from .config import *
+from config import bot
 from tools import Timer, fast_download, fast_upload, bash
 import subprocess
 import asyncio
 import os
 
 #_______________ Startup _________________#
+
 @bot.on(events.NewMessage(pattern="/start"))
 async def _(event):
   xx = f"""
@@ -41,6 +42,7 @@ async def _(event):
       ]
     )
 #_______________ ls _______________________#
+
 @bot.on(events.NewMessage(pattern="/ls"))
 async def _(event):
   p = subprocess.Popen(f'ls -lh downloads', stdout=subprocess.PIPE, shell=True)
@@ -48,6 +50,7 @@ async def _(event):
   await asyncio.sleep(15)
   await x.delete()
 #________________ Encode __________________#
+
 @bot.on(events.NewMessage(pattern="/compress"))
 async def _(event):
   mesh = await event.get_reply_message()
