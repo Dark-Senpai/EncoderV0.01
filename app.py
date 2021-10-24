@@ -63,10 +63,4 @@ async def encode(event):
   os.remove(f"./downloads/{file}")
   os.remove(f"./downloads/[ENCODED] {file}")
   await event.reply(f"./downloads/[ENCODED] {file}", file=final_file, force_document=True)
-  await asyncio.sleep(5)
-             
-#____________________ Run The Bot ________________#
-
-bot.start()
-
-bot.run_until_disconnected()
+  await asyncio.sleep(4)
