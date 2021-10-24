@@ -16,7 +16,7 @@
 import os 
 import time 
 from app import start, list_files, encode 
-from config import bot 
+from config import bot, LOGS 
 
 #________ CMD __________#
 
