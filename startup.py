@@ -36,4 +36,4 @@ async def _(e):
 #________ Run The Bot __________#
 
 LOGS.info("Bot has started.")
-cbot.run_until_disconnected()
+bot.run_until_disconnected()
