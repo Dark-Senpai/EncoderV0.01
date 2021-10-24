@@ -115,7 +115,7 @@ async def fast_download(client, msg, reply = None, download_folder = None, progr
     await reply.edit("♨️ Finished Downloading..")
     return download_location
 
-async def fast_upload(client, file_location, reply=None, name=None, progress_bar_function = progress_bar_str):
+async def fast_upload(client, file_location, reply=None, filename=None, progress_bar_function = progress_bar_str):
     timer = Timer()
     if name == None:
         name = file_location.split("/")[-1]
