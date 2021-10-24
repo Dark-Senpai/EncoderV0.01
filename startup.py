@@ -30,7 +30,7 @@ async def _(e):
   await list_files(e)
  
  
-@cbot.on(events.NewMessage(pattern="/request_new_job"))
+@bot.on(events.NewMessage(pattern="/request_new_job"))
 async def _(e):
   await encode(e)
  
