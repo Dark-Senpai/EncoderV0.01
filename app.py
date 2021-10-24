@@ -19,6 +19,7 @@
 from telethon import events, Button
 from config import bot, BOT_USERNAME 
 from tools import(
+  Timer,
   fast_download,
   fast_upload,
   bash
@@ -28,7 +29,7 @@ import asyncio
 import os
 
 #_______________ Startup _________________#
-@bot.on(events.NewMessage(pattern=f"/start{BOT_USERNAME}"))
+@bot.on(events.NewMessage(pattern="/start"))
 async def _(event):
   xx = f"""
   Hi, {event.sender.first_name}, Its nice to meet ya!
@@ -45,14 +46,14 @@ async def _(event):
       ]
     )
 #_______________ ls _______________________#
-@bot.on(events.NewMessage(pattern=f"/ls{BOT_USERNAME}"))
+@bot.on(events.NewMessage(pattern="/ls"))
 async def _(event):
   p = subprocess.Popen(f'ls -lh downloads', stdout=subprocess.PIPE, shell=True)
   x = await event.reply(p.communicate()[0].decode("utf-8", "replace").strip())
   await asyncio.sleep(15)
   await x.delete()
 #________________ Encode __________________#
-@bot.on(events.NewMessage(pattern=f"/encode{BOT_USERNAME}"))
+@bot.on(events.NewMessage(pattern="/compress"))
 async def _(event):
   mesh = await event.get_reply_message()
   fuk = await event.reply("📥 Downloading 📥")
