@@ -13,10 +13,10 @@
 # License can be found in <
 # https://github.com/Dark-Senpai/EncoderV0.01/blob/main/License> .
 
-from .app import *
-from .config import *
-
-LOGS.info("Starting...")
+import os 
+import time 
+from app import start, list_files, encode 
+from config import bot 
 
 #________ CMD __________#
 
