@@ -17,7 +17,7 @@
 #_______________ Import Vital items ________________#
 
 from telethon import events, Button
-from config import bot, BOT_USERNAME 
+from config import bot
 from tools import(
   Timer,
   fast_download,
