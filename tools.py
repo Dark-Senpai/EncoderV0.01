@@ -21,9 +21,9 @@ import os
 import re
 import sys
 import time
-import datetime as dt
 import pathlib 
 
+from datetime import datetime as dt
 from FastTelethon import upload_file, download_file
 
 # --------------------------------------------------------------------- #
