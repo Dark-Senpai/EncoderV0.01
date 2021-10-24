@@ -34,7 +34,3 @@ BOT_USERNAME = os.environ.get('BOT_USERNAME')
 #BOT_USERNAME = config("BOT_USERNAME", default=None)
 
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
-API_ID = 3281305
-API_HASH = "a9e62ec83fe3c22379e3e19195c8b3f6" 
-BOT_TOKEN = "2011046095:AAEBBAkwF9UVvxgPqPWh5bdlWaJEU_OhnFk" 
-BOT_USERNAME = "telethonBot_bot"
