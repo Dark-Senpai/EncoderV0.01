@@ -16,17 +16,17 @@
 
 #_______________ Import Vital items ________________#
 
-from telethon import events, Button
-from config import bot
+
+import subprocess 
+import asyncio 
+import os 
+from telethon import events, Button 
+from config import bot 
 from tools import Timer, fast_download, fast_upload, bash
-import subprocess
-import asyncio
-import os
 
 #_______________ Startup _________________#
 
-@bot.on(events.NewMessage(pattern="/start"))
-async def _(event):
+async def start(event):
   xx = f"""
   Hi, {event.sender.first_name}, Its nice to meet ya!
   This is a **Video Encoder** Bot Which encodes your video files (animes/movies/series/news)
@@ -43,16 +43,15 @@ async def _(event):
     )
 #_______________ ls _______________________#
 
-@bot.on(events.NewMessage(pattern="/ls"))
-async def _(event):
+async def list_files(event):
   p = subprocess.Popen(f'ls -lh downloads', stdout=subprocess.PIPE, shell=True)
   x = await event.reply(p.communicate()[0].decode("utf-8", "replace").strip())
   await asyncio.sleep(15)
   await x.delete()
 #________________ Encode __________________#
 
-@bot.on(events.NewMessage(pattern="/compress"))
-async def _(event):
+
+async def encode(event):
   mesh = await event.get_reply_message()
   fuk = await event.reply("📥 Downloading 📥")
   file = await fast_download(bot, mesh, fuk, "./downloads/")
