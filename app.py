@@ -18,12 +18,7 @@
 
 from telethon import events, Button
 from .config import *
-from tools import(
-  Timer,
-  fast_download,
-  fast_upload,
-  bash
-)
+from tools import Timer, fast_download, fast_upload, bash
 import subprocess
 import asyncio
 import os
