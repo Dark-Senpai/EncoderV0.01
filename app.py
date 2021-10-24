@@ -22,7 +22,7 @@ import asyncio
 import os 
 from telethon import events, Button 
 from config import bot 
-from tools import Timer, fast_download, fast_upload, bash
+from tools import progress_upload, progress_download 
 
 #_______________ Startup _________________#
 
@@ -54,13 +54,13 @@ async def list_files(event):
 async def encode(event):
   mesh = await event.get_reply_message()
   fuk = await event.reply("📥 Downloading 📥")
-  file = await fast_download(bot, mesh, fuk, "./downloads/")
+  file = await progress_download(bot, mesh, fuk, "./downloads/")
   file = file.split("/")[-1]
   print(file)
-  await fuk.edit("⏰ Encoding In **Progress**")
-  await bash(f'ffmpeg -i "./downloads/{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "./downloads/[ENCODED] {file}"')
-  final_file = await fast_upload(bot, f"./downloads/[ENCODED] {file}", fuk)
+ # await fuk.edit("⏰ Encoding In **Progress**")
+  #await bash(f'ffmpeg -i "./downloads/{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "./downloads/[ENCODED] {file}"')
+  final_file = await progress_upload(bot, f"./downloads/{file}", fuk)
   os.remove(f"./downloads/{file}")
-  os.remove(f"./downloads/[ENCODED] {file}")
-  await event.reply(f"./downloads/[ENCODED] {file}", file=final_file, force_document=True)
+  #os.remove(f"./downloads/[ENCODED] {file}")
+  await event.reply(f"./downloads/{file}", file=final_file, force_document=True)
   await asyncio.sleep(4)
