@@ -15,6 +15,7 @@
 
 import os 
 import time 
+from telethon import events, NewMessage 
 from app import start, list_files, encode 
 from config import bot, LOGS 
 
