@@ -18,7 +18,7 @@
 
 from telethon import events, Button
 from config import bot, BOT_USERNAME 
-from utils import(
+from tools import(
   fast_download,
   fast_upload,
   bash
