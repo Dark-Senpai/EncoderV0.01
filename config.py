@@ -14,10 +14,9 @@
 # https://github.com/Dark-Senpai/EncoderV0.01/blob/main/License> .
 
 from telethon import TelegramClient
-import logging 
 import time
 from configure import vars 
-
+from logging import DEBUG, INFO, basicConfig, getLogger, warning
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 
@@ -31,4 +30,14 @@ BOT_TOKEN = "2011046095:AAEBBAkwF9UVvxgPqPWh5bdlWaJEU_OhnFk"
 
 
 #__________________ TelegramClient __________________#
-bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+basicConfig(format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=INFO)
+LOGS = getLogger(__name__)
+
+
+try:
+  bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+except Exception as e:
+  LOGS.info("Vars arent added!, I am exiting...")
+  LOGS.info(str(e))
+  exit()
+           
