@@ -18,19 +18,20 @@ import os
 import logging
 import time
 from telethon import TelegramClient
+from configure import vars 
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 
-# Basics
-API_ID = os.environ.get('API_ID')
-API_HASH = os.environ.get('API_HASH')
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
-BOT_USERNAME = os.environ.get('BOT_USERNAME')
+#___________________ Basics __________________# 
+# ADD VALUE BELOW FOR API_ID , DONT USE " " or ' ' 
+API_ID = 
+# ADD VALUE BELOW FOR API_HASH , DONT REMOVE " " 
+API_HASH = " " 
+# ADD VALUE BELOW FOR BOT_TOKEN , DONT REMOVE " " 
+BOT_TOKEN = " "
+# ADD VALUE FOR BOT_USERNAME , DONT REMOVE " " 
+BOT_USERNAME = " " 
 
-#APP_ID = config("APP_ID", default=None, cast=int)
-#API_HASH = config("API_HASH", default=None)
-#BOT_TOKEN = config("BOT_TOKEN", default=None)
-#BOT_USERNAME = config("BOT_USERNAME", default=None)
-
+#__________________ TelegramClient __________________#
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
