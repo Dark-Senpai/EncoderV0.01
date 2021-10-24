@@ -2,9 +2,9 @@ from val_cfg import get_config
 
 #______________ Vars ________________#
 class vars(object):
-  # add api_id in __init.py ( get from telegram.org )
+  # add api_id in __init__.py ( get from telegram.org )
   API_ID = get_config('API_ID')
-  # add api_hash in __init.py ( get from telegram.org)
+  # add api_hash in __init__.py ( get from telegram.org)
   API_HASH = get_config('API_HASH')
   # array! add bot_token recieved from @botfather from telegram 
   BOT_TOKEN = get_config('BOT_TOKEN')
