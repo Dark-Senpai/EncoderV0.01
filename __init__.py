@@ -23,13 +23,13 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 
 #___________________ Basics __________________# 
 # ADD VALUE BELOW FOR API_ID , DONT USE " " or ' ' 
-API_ID = 
+API_ID = 3281305
 # ADD VALUE BELOW FOR API_HASH , DONT REMOVE " " 
-API_HASH = " " 
+API_HASH = "a9e62ec83fe3c22379e3e19195c8b3f6" 
 # ADD VALUE BELOW FOR BOT_TOKEN , DONT REMOVE " " 
-BOT_TOKEN = " "
+BOT_TOKEN = "2011046095:AAEBBAkwF9UVvxgPqPWh5bdlWaJEU_OhnFk"
 # ADD VALUE FOR BOT_USERNAME , DONT REMOVE " " 
-BOT_USERNAME = " " 
+BOT_USERNAME = "telethonBot_bot" 
 
 #__________________ TelegramClient __________________#
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
