@@ -14,10 +14,8 @@
 # https://github.com/Dark-Senpai/EncoderV0.01/blob/main/License> .
 
 from telethon import TelegramClient
-import os
-import logging
+import logging 
 import time
-from telethon import TelegramClient
 from configure import vars 
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
