@@ -30,7 +30,7 @@ API_HASH = "a9e62ec83fe3c22379e3e19195c8b3f6"
 BOT_TOKEN = "2011046095:AAEBBAkwF9UVvxgPqPWh5bdlWaJEU_OhnFk"
 # ADD VALUE FOR BOT_USERNAME , DONT REMOVE " " 
 BOT_USERNAME = "telethonBot_bot" 
-except Exception as e:
+if Exception as e:
     print(str(e))
     exit()
 
