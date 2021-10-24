@@ -13,3 +13,27 @@
 # License can be found in <
 # https://github.com/Dark-Senpai/EncoderV0.01/blob/main/License> .
 
+from .app import *
+from .config import *
+
+LOGS.info("Starting...")
+
+#________ CMD __________#
+
+@bot.on(events.NewMessage(pattern="/start"))
+async def _(e):
+  await start(e)
+    
+@bot.on(events.NewMessage(pattern="/ls"))
+async def _(e):
+  await list_files(e)
+ 
+ 
+@cbot.on(events.NewMessage(pattern="/request_new_job"))
+async def _(e):
+  await encode(e)
+ 
+#________ Run The Bot __________#
+
+LOGS.info("Bot has started.")
+cbot.run_until_disconnected()
