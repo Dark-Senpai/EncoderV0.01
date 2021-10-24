@@ -17,8 +17,6 @@ from telethon import TelegramClient
 import time
 from configure import vars 
 from logging import DEBUG, INFO, basicConfig, getLogger, warning
-logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-                    level=logging.WARNING)
 
 #___________________ Basics __________________# 
 # ADD VALUE BELOW FOR API_ID , DONT USE " " or ' ' 
