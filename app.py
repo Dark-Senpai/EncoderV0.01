@@ -58,6 +58,8 @@ async def encode(event):
   file = file.split("/")[-1]
   print(file)
  # await fuk.edit("⏰ Encoding In **Progress**")
+  await fuk.edit("Downloaded The file, now **UPLOADING**...")
+  await asyncio.sleep(1)
   #await bash(f'ffmpeg -i "./downloads/{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "./downloads/[ENCODED] {file}"')
   final_file = await progress_upload(bot, f"./downloads/{file}", fuk)
   os.remove(f"./downloads/{file}")
