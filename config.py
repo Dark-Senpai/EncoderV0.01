@@ -28,8 +28,6 @@ API_ID = 3281305
 API_HASH = "a9e62ec83fe3c22379e3e19195c8b3f6" 
 # ADD VALUE BELOW FOR BOT_TOKEN , DONT REMOVE " " 
 BOT_TOKEN = "2011046095:AAEBBAkwF9UVvxgPqPWh5bdlWaJEU_OhnFk"
-# ADD VALUE FOR BOT_USERNAME , DONT REMOVE " " 
-BOT_USERNAME = "telethonBot_bot" 
 
 
 #__________________ TelegramClient __________________#
