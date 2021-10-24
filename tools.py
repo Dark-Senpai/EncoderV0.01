@@ -117,8 +117,8 @@ async def fast_download(client, msg, reply = None, download_folder = None, progr
 
 async def fast_upload(client, file_location, reply=None, filename=None, progress_bar_function = progress_bar_str):
     timer = Timer()
-    if name == None:
-        name = file_location.split("/")[-1]
+    if filename == None:
+        filename = file_location.split("/")[-1]
     async def progress_bar(downloaded_bytes, total_bytes):
         if timer.can_send():
             data = progress_bar_function(downloaded_bytes, total_bytes)
@@ -136,7 +136,7 @@ async def fast_upload(client, file_location, reply=None, filename=None, progress
             the_file = await upload_file(
                 client=client,
                 file=f,
-                name=name,
+                fileame=fileame,
             )
         
     await reply.edit("♨️ Finished uploading..")
