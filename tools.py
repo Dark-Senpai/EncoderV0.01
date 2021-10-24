@@ -21,7 +21,7 @@ import os
 import re
 import sys
 import time
-import datetime at dt
+import datetime as dt
 import pathlib 
 
 
@@ -143,6 +143,6 @@ async def fast_upload(client, file_location, reply=None, name=None, progress_bar
                 name=name,
             )
         
-    await reply.edit("Finished uploading")
+    await reply.edit("♨️ Finished uploading..")
     return the_file
 #__________________ Done _________________#
