@@ -24,11 +24,7 @@ import time
 import datetime as dt
 import pathlib 
 
-
 from FastTelethon import upload_file, download_file
-
-
-from . import *
 
 # --------------------------------------------------------------------- #
 async def bash(cmd):
