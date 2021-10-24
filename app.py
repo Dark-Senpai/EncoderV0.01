@@ -31,7 +31,7 @@ import os
 @bot.on(events.NewMessage(pattern=f"/start{bot_username}"))
 async def _(event):
   xx = f"""
-  Hello, {event.sender.first_name}, Its nice to meet ya!
+  Hi, {event.sender.first_name}, Its nice to meet ya!
   This is a **Video Encoder** Bot Which encodes your video files (animes/movies/series/news)
   in low size ( 480p ) with good quality.
   Encode videos in 480p resolution.
@@ -41,9 +41,9 @@ async def _(event):
   await event.reply(
     xx,
     buttons=[
-      [Button.url("Boss", url="https://t.me/Bro_isDarkal")],
-      )
-      
+      [Button.url("Boss", url='t.me/Bro_isDarkal')]
+      ]
+    )
 #_______________ ls _______________________#
 @bot.on(events.NewMessage(pattern=f"/ls{bot_username}"))
 async def _(event):
