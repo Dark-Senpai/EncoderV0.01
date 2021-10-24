@@ -128,7 +128,7 @@ async def fast_upload(client, file_location, reply=None, filename=None, progress
             the_file = await upload_file(
                 client=client,
                 file=f,
-                name=name,
+                filename=filename,
                 progress_callback=progress_bar
             )
     else:
