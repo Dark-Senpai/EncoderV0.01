@@ -13,12 +13,19 @@
 # License can be found in <
 # https://github.com/Dark-Senpai/EncoderV0.01/blob/main/License> .
 
-import os
+from telethon import TelegramClient
+from decouple import config
+import logging
+import time
 from telethon import TelegramClient
 
-api_id = os.environ.get('API_ID')
-api_hash = os.environ.get('API_HASH')
-bot_token = os.environ.get('BOT_TOKEN')
-bot_username = os.environ.get('BOT_USERNAME')
+logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
+                    level=logging.WARNING)
 
-bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+# Basics
+APP_ID = config("APP_ID", default=None, cast=int)
+API_HASH = config("API_HASH", default=None)
+BOT_TOKEN = config("BOT_TOKEN", default=None)
+BOT_USERNAME = config("BOT_USERNAME", default=None)
+
+bot = TelegramClient('bot', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
