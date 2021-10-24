@@ -50,7 +50,7 @@ async def list_files(event):
   await x.delete()
 #________________ Encode __________________#
 
-async def gen_sample(e):
+async def encodee(e):
   sec = e.pattern_match.group(1)
   if sec and sec.isdigit():
     stime = int(sec)
