@@ -10,8 +10,5 @@ class vars(object):
   BOT_TOKEN = get_config('BOT_TOKEN')
   # oof ! add your bot username !
   BOT_USERNAME = get_config('BOT_USERNAME')
-except Exception as e:
-  print(str(e))
-  exit()
 
 #_______________ Done ___________#
