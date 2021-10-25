@@ -21,21 +21,17 @@
 import asyncio
 import os
 import re
+import maths 
 import time
 from telethon import events, Button 
 from config import bot 
 from datetime import datetime as dt
 
-#from pyUltroid.functions.tools import metadata
-from telethon.errors.rpcerrorlist import MessageNotModifiedError
-from telethon.tl.types import DocumentAttributeVideo
-
-from pyUltroid.functions.tools import (
+from tools import (
     bash,
     downloader,
     eor,
     humanbytes,
-    math,
     mediainfo,
     time_formatter,
     uploader
