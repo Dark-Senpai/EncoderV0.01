@@ -17,12 +17,31 @@
 #_______________ Import Vital items ________________#
 
 
-import subprocess 
-import asyncio 
-import os 
+
+import asyncio
+import os
+import re
+import time
 from telethon import events, Button 
 from config import bot 
-from tools import downloader, uploader, bash 
+from datetime import datetime as dt
+
+from pyUltroid.functions.tools import metadata
+from telethon.errors.rpcerrorlist import MessageNotModifiedError
+from telethon.tl.types import DocumentAttributeVideo
+
+from . import (
+    bash,
+    downloader,
+    eor,
+    get_string,
+    humanbytes,
+    math,
+    mediainfo,
+    time_formatter,
+    ultroid_cmd,
+    uploader,
+)
 
 #_______________ Startup _________________#
 
@@ -50,56 +69,4 @@ async def list_files(event):
   await x.delete()
 #________________ Encode __________________#
 
-async def encodee(e):
-  sec = e.pattern_match.group(1)
-  if sec and sec.isdigit():
-    stime = int(sec)
-  vido = await e.get_reply_message()
-  name = vido.file.name
-  if not name:
-    name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
-  
-  c_time = time.time()
-  file = await downloader(
-    "resources/downloads/" + name,
-    vfile,
-    c_time,
-    "Downloading " + name + "..."
-  )
-  d_time = time.time()
-  diff = time_formatter((d_time - c_time) * 1000)
-  file_name = (file.name).split("/")[-1]
-  out = file_name.replace(file_name.split(".")[-1], "_[Animes_Encoded].mkv")
-  xxx = await xxx.edit(
-    f"Downloaded `{file.name}` of `{humanbytes(o_sizs)}` in `{diff}`.\n\nNow encoding ......"
-  )
-  ss, dd = duration_s(file.name, stime)
-  cmd = f'ffmpeg -i "{file.name}" -preset veryfast -crf 32 -c:a libopus -ab 32k  -c:v libx265 -s 800x400  -map 0 "{out}" -y'
-  await bash(cmd)
-  os.remove(file.name)
-  f_time = time.time()
-  mmmm = await uploader(
-    out,
-    out,
-    f_time,
-    xxx,
-    "Uploading " + out + "...",
-  )
-  data = await metadata(out)
-  width = data["width"]
-  height = data["height"]
-  duration = data["duration"]
-  attributes = [
-    DocumentAttributeVideo(
-      duration=duration, w=width, h=height, supports_streaming=True
-    )
-  ]
-  caption = "@Animes_Encoded"
-  await e.client.send_file(
-    e.chat_id,
-    mmmm,
-    caption=caption,
-    attributes=attributes,
-    force_document=False,
-    reply_to=e.reply_to_msg_id,
-  )
+async def encode(e):
