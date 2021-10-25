@@ -30,16 +30,15 @@ from datetime import datetime as dt
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
 from telethon.tl.types import DocumentAttributeVideo
 
-from . import (
+from pyUltroid.functions.tools import (
     bash,
     downloader,
     eor,
-    get_string,
     humanbytes,
     math,
     mediainfo,
     time_formatter,
-    uploader,
+    uploader
 )
 
 #_______________ Startup _________________#
