@@ -22,7 +22,7 @@ import asyncio
 import os 
 from telethon import events, Button 
 from config import bot 
-from tools import progress_upload, progress_download 
+from tools import downloader, uploader, bash 
 
 #_______________ Startup _________________#
 
@@ -58,12 +58,11 @@ async def encodee(e):
   name = vido.file.name
   if not name:
     name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
-  xxx = await eor(e, get_string("audiotools_5"))
+  
   c_time = time.time()
   file = await downloader(
     "resources/downloads/" + name,
     vfile,
-    xxx,
     c_time,
     "Downloading " + name + "..."
   )
@@ -104,19 +103,3 @@ async def encodee(e):
     force_document=False,
     reply_to=e.reply_to_msg_id,
   )
-  await xxx.delete()
-async def encode(event):
-  mesh = await event.get_reply_message()
-  fuk = await event.reply("📥 Downloading 📥")
-  file = await progress_download(bot, mesh, fuk, "./downloads/")
-  file = file.split("/")[-1]
-  print(file)
- # await fuk.edit("⏰ Encoding In **Progress**")
-  await fuk.edit("Downloaded The file, now **UPLOADING**...")
-  await asyncio.sleep(1)
-  #await bash(f'ffmpeg -i "./downloads/{file}" -map 0 -c:v libx265 -crf 30 -c:a libopus -ab 40k  -s 854x480 -pix_fmt yuv420p -preset veryfast "./downloads/[ENCODED] {file}"')
-  final_file = await progress_upload(bot, f"./downloads/{file}", fuk)
-  os.remove(f"./downloads/{file}")
-  #os.remove(f"./downloads/[ENCODED] {file}")
-  await event.reply(f"./downloads/{file}", file=final_file, force_document=True)
-  await asyncio.sleep(4)
