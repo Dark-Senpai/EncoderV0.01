@@ -160,17 +160,16 @@ async def encode(e):
             xxx,
             "Uploading " + out + "...",
         )
-            await e.client.send_file(
-                e.chat_id,
-                mmmm,
-                thumb="resources/extras/ultroid.jpg",
-                caption=caption,
-                force_document=True,
-                reply_to=e.reply_to_msg_id,
-            )
-            await xxx.delete()
-            os.remove(out)
-            os.remove(progress)
-    else:
-        await eor(e, get_string("audiotools_8"), time=5)
-
+        await e.client.send_file(
+            e.chat_id,
+            mmmm,
+            caption=caption,
+            force_document=True,
+            reply_to=e.reply_to_msg_id,
+        )
+        await xxx.delete()
+        os.remove(out)
+        os.remove(progress)
+      
+        
+            
