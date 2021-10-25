@@ -26,7 +26,7 @@ from telethon import events, Button
 from config import bot 
 from datetime import datetime as dt
 
-from pyUltroid.functions.tools import metadata
+#from pyUltroid.functions.tools import metadata
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
 from telethon.tl.types import DocumentAttributeVideo
 
@@ -160,26 +160,6 @@ async def encode(e):
             xxx,
             "Uploading " + out + "...",
         )
-        if to_stream:
-            data = await metadata(out)
-            width = data["width"]
-            height = data["height"]
-            duration = data["duration"]
-            attributes = [
-                DocumentAttributeVideo(
-                    duration=duration, w=width, h=height, supports_streaming=True
-                )
-            ]
-            await e.client.send_file(
-                e.chat_id,
-                mmmm,
-                thumb="resources/extras/ultroid.jpg",
-                caption=caption,
-                attributes=attributes,
-                force_document=False,
-                reply_to=e.reply_to_msg_id,
-            )
-        else:
             await e.client.send_file(
                 e.chat_id,
                 mmmm,
