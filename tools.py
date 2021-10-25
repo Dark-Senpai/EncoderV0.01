@@ -205,4 +205,6 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         else:
             await event.edit("`✦ {}`\n\n{}".format(type_of_ps, tmp))
 
-
+# kanged from pyUltroid/functions/tools 
+# the above content is not my work 
+# support @TeamUltroid !
