@@ -21,7 +21,7 @@
 import asyncio
 import os
 import re
-import maths 
+import math
 import time
 from telethon import events, Button 
 from config import bot 
