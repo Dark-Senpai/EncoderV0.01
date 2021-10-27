@@ -41,11 +41,11 @@ async def _(e):
 
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))
 async def _(e):
-  await iabout(e)
+  await beck(e)
 
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("iabout")))
 async def _(e):
-    await ihelp(e)
+    await iabout(e)
 
 
 @bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))
