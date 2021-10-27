@@ -25,9 +25,9 @@ from config import bot, LOGS
 async def _(e):
   await start(e)
     
-@bot.on(events.NewMessage(pattern="/ls"))
-async def _(e):
-  await list_files(e)
+#@bot.on(events.NewMessage(pattern="/ls"))
+#async def _(e):
+  #await list_files(e)
  
  
 @bot.on(events.NewMessage(pattern="/request_new_job"))
