@@ -116,7 +116,7 @@ async def encoding(event):
   except Exception as er:
     LOGS.info(er)
     return os.remove(dl)
-  e = dl 
+  e = show_dl 
   es = dt.now()
   kk = dl.split("/")[-1]
   aa = kk.split(".")[-1]
