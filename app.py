@@ -33,19 +33,15 @@ from manage import *
 #_______________ Startup _________________#
 
 async def start(event):
-  # dont kang 
-  xx = 
-  """
+  xx = """
   Hi ! I am one powerful video encoder/compressor.\nI can compress your files in very less size with a slight quality change !\nJust send me video file or a document and wait for it to he **compressed**\n\nPowered By - @Animes_Encoded . 
   """
   # dont kang 
-  ihelp = 
-  """
+  ihelp = """
   Just send a video file or video document.\nYou should consider sending files or videos with extension .mp4 , .mkv and .webm\n\n**+This bot uses a poweful ffmpeg code that encodes animes/news of 25 minutes in 40 to 50mb\n+U will get a good, satisfactory quality in the encoded file\n-The bot repo is private and u cant acess it or deploy the bot for private use\n-The ffmpeg code cant be revealed as it is used by our encoderz team.**\n\nBy - @Animes_Encoded. 
   """
   # dont kang 
-  iabout = 
-  """
+  iabout = """
   **Dev** - [Dark](https://t.me/Bro_isDarkal)
   **Repo** - [Source Code](https://t.me/shity_man)
   **Python** - [Python 3](https://python.org)
