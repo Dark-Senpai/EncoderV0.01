@@ -137,8 +137,8 @@ async def encoding(event):
     os.remove(dl)
     return os.remove(end_dl)
   
-  except BaseException:
-      pass
+  #except BaseException:
+   #   pass
 # wtf? i will get a error here ??
   ees = dt.now()
   ttt = time.time()
