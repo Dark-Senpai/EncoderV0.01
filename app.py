@@ -26,6 +26,8 @@ import time
 from telethon import events, Button 
 from config import bot 
 from datetime import datetime as dt
+from FastTelethon import download_file, upload_file 
+from manage import * 
 
 
 #_______________ Startup _________________#
