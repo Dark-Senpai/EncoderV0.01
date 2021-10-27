@@ -161,5 +161,3 @@ async def encoding(event):
   # i messed up with this logic !
   os.remove(dl)
   os.remove(end_dl)
-except BaseException as er:
-  LOGS.info(er)
