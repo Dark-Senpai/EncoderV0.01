@@ -16,7 +16,7 @@
 import os 
 import time 
 from telethon import events
-from app import start, list_files, encode 
+from app import start, encoding 
 from config import bot, LOGS 
 
 #________ CMD __________#
@@ -32,7 +32,7 @@ async def _(e):
  
 @bot.on(events.NewMessage(pattern="/request_new_job"))
 async def _(e):
-  await encode(e)
+  await encoding(e)
  
 #________ Run The Bot __________#
 
