@@ -98,14 +98,6 @@ async def encoding(event):
               )
             ),
         )
-      else:
-        dl = await event.client.download_media(
-          event.media,
-          dir,
-          progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(d, t, dl, tame, "Downloading")
-            ),
-          )
   except Exception as er:
     LOGS.info(er)
     return os.remove(dl)
