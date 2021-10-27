@@ -68,8 +68,8 @@ async def start(event):
  ##await x.delete()
 #________________ Encode __________________#
 async def encoding(event):
-  if event.is_private 
-  return await event.reply("Bruh! u cant use me here ! I am made for groups only \n\nBy @Animes_Encoded")
+  if event.is_private:
+    return await event.reply("Bruh! u cant use me here ! I am made for groups only \n\nBy @Animes_Encoded")
   if not event.media:
     return await event.reply("I cant work on this format\nPlease check the available [format](https://t.me/omg_wtf_lol) ")
   if hasattr(event.media, "document"):
