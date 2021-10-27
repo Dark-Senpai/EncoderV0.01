@@ -72,12 +72,6 @@ async def encoding(event):
     return await event.reply("Bruh! u cant use me here ! I am made for groups only \n\nBy @Animes_Encoded")
   if not event.media:
     return await event.reply("I cant work on this format\nPlease check the available [format](https://t.me/omg_wtf_lol) ")
-  if hasattr(event.media, "document"):
-    if not event.media.document.mime_type.startswith("video", "application/octet-stream")
-    ):
-      return await event.reply("I cant work on this format\nPlease Check the available [format](https://t.me/omg_wtf)")
-      else:
-        return 
   show_dl = await event.reply("📥 Downloading ....")
   dt_kid = dt.now()
   tame = time.now()
