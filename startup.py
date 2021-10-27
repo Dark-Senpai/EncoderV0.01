@@ -17,7 +17,7 @@ import os
 import re 
 import time 
 from telethon import events
-from app import start, encoding 
+from app import *
 from config import bot, LOGS 
 
 #________ CMD __________#
