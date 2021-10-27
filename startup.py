@@ -33,6 +33,23 @@ async def _(e):
 @bot.on(events.NewMessage(pattern="/request_new_job"))
 async def _(e):
   await encoding(e)
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("ihelp")))
+async def _(e):
+  await ihelp(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))
+async def _(e):
+  await iabout(e)
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("iabout")))
+async def _(e):
+    await ihelp(e)
+
+
+@bot.on(events.callbackquery.CallbackQuery(data=re.compile("beck")))
+async def _(e):
+    await beck(e)
  
 #________ Run The Bot __________#
 
