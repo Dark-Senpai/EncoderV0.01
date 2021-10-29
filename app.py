@@ -23,6 +23,7 @@ import os
 import re
 import math
 import time
+import subprocess 
 from telethon import events, Button 
 from config import bot 
 from datetime import datetime as dt
