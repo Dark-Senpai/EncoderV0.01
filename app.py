@@ -90,10 +90,13 @@ async def bash(cmd):
     stdout=asyncio.subprocess.PIPE,
     stderr=asyncio.subprocess.PIPE,
     )
-    stdout, stderr = await process.communate()
-    err = stderr.decode().strip()
-    out = stdout.decode().strip()
-    return out, err 
+  stdout, stderr = await process.communate()
+  err = stderr.decode().strip()
+  out = stdout.decode().strip()
+  return out, err 
+  
+    
+  
     
 
 #_______________ ls _______________________#
